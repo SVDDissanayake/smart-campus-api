@@ -43,4 +43,10 @@ public class SensorResource {
     public Sensor getSensor(@PathParam("sensorId") String sensorId) {
         return SENSOR_SERVICE.getSensorById(sensorId);
     }
+
+    @Path("{sensorId}/readings")
+    public SensorReadingResource getSensorReadingResource(@PathParam("sensorId") String sensorId) {
+        SENSOR_SERVICE.getSensorById(sensorId);
+        return new SensorReadingResource(sensorId);
+    }
 }
