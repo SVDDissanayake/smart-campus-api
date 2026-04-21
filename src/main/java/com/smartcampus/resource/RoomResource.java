@@ -3,8 +3,8 @@ package com.smartcampus.resource;
 import java.net.URI;
 import java.util.List;
 
-import com.smartcampus.model.Room;
-import com.smartcampus.service.RoomService;
+import com.smartcampus.model.CampusModels.Room;
+import com.smartcampus.service.CampusService;
 
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -23,16 +23,16 @@ import jakarta.ws.rs.core.Context;
 @Consumes(MediaType.APPLICATION_JSON)
 public class RoomResource {
 
-    private static final RoomService ROOM_SERVICE = RoomService.getInstance();
+    private static final CampusService CAMPUS_SERVICE = CampusService.getInstance();
 
     @GET
     public List<Room> getRooms() {
-        return ROOM_SERVICE.getAllRooms();
+        return CAMPUS_SERVICE.getRooms();
     }
 
     @POST
     public Response createRoom(Room room, @Context UriInfo uriInfo) {
-        Room createdRoom = ROOM_SERVICE.createRoom(room);
+        Room createdRoom = CAMPUS_SERVICE.createRoom(room);
         URI location = uriInfo.getAbsolutePathBuilder().path(createdRoom.getId()).build();
 
         return Response.created(location).entity(createdRoom).build();
@@ -41,13 +41,13 @@ public class RoomResource {
     @GET
     @Path("{roomId}")
     public Room getRoom(@PathParam("roomId") String roomId) {
-        return ROOM_SERVICE.getRoomById(roomId);
+        return CAMPUS_SERVICE.getRoom(roomId);
     }
 
     @DELETE
     @Path("{roomId}")
     public Response deleteRoom(@PathParam("roomId") String roomId) {
-        ROOM_SERVICE.deleteRoom(roomId);
+        CAMPUS_SERVICE.deleteRoom(roomId);
         return Response.noContent().build();
     }
 }
