@@ -1,0 +1,34 @@
+package com.smartcampus;
+
+import java.io.IOException;
+import java.net.URI;
+
+import org.glassfish.grizzly.http.server.HttpServer;
+import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
+
+import com.smartcampus.config.AppConfig;
+
+public class Main {
+
+    private static final String BASE_URI = "http://localhost:9090/api/v1/";
+
+    private Main() {
+    }
+
+    public static HttpServer startServer() {
+        return GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), new AppConfig());
+    }
+
+    public static void main(String[] args) throws IOException {
+        HttpServer server = startServer();
+
+        System.out.println("Smart Campus API is running at " + BASE_URI);
+        System.out.println("Press Enter to stop the server.");
+
+        try {
+            System.in.read();
+        } finally {
+            server.shutdownNow();
+        }
+    }
+}
