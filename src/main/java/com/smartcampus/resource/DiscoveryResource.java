@@ -13,11 +13,21 @@ import jakarta.ws.rs.core.MediaType;
 public class DiscoveryResource {
 
     @GET
-    public Map<String, String> discover() {
-        Map<String, String> links = new LinkedHashMap<String, String>();
-        links.put("version", "v1");
-        links.put("rooms", "/api/v1/rooms");
-        links.put("sensors", "/api/v1/sensors");
-        return links;
+    public Map<String, Object> discover() {
+        Map<String, Object> response = new LinkedHashMap<String, Object>();
+        Map<String, String> admin = new LinkedHashMap<String, String>();
+        Map<String, String> resources = new LinkedHashMap<String, String>();
+
+        admin.put("name", "Smart Campus Operations");
+        admin.put("email", "smartcampus-admin@westminster.ac.uk");
+
+        resources.put("rooms", "/api/v1/rooms");
+        resources.put("sensors", "/api/v1/sensors");
+
+        response.put("version", "v1");
+        response.put("admin", admin);
+        response.put("resources", resources);
+
+        return response;
     }
 }
