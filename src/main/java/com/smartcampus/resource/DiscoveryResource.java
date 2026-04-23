@@ -17,8 +17,8 @@ public class DiscoveryResource {
         Map<String, Object> response = new LinkedHashMap<String, Object>();
 
         response.put("version", "v1");
-        response.put("rooms", "/rest/rooms");
-        response.put("sensors", "/rest/sensors");
+        response.put("rooms", "/api/v1/rooms");
+        response.put("sensors", "/api/v1/sensors");
 
         return response;
     }
