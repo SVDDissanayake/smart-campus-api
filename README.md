@@ -21,14 +21,8 @@ Example:
 ```
 {
   "version": "v1",
-  "contact": {
-    "name": "Smart Campus API Support",
-    "email": "support@smartcampus.com"
-  },
-  "resources": {
-    "rooms": "/rest/rooms",
-    "sensors": "/rest/sensors"
-  }
+  "rooms": "/rest/rooms",
+  "sensors": "/rest/sensors"
 }
 ```
 
@@ -142,3 +136,12 @@ http://localhost:8080/<project-name>/rest/
 ## Conclusion
 
 This project demonstrates RESTful API design including resource management, validation, sub-resources, and error handling using JAX-RS.
+
+
+## Declaration
+
+This project was developed independently by the author in accordance with the guidelines provided by the module team at the University of Westminster. All work presented is original unless otherwise referenced.
+
+## Author Details
+### Name : Dissanayakege Sanuja Vindula Dewmith Dissanayake
+### Email : dewmithdissanayake@gmail.com / sanuja.20231806@iit.ac.lk
