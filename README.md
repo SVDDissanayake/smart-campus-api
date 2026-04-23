@@ -21,8 +21,8 @@ Example:
 ```
 {
   "version": "v1",
-  "rooms": "/rest/rooms",
-  "sensors": "/rest/sensors"
+  "rooms": "/api/v1/rooms",
+  "sensors": "/api/v1/sensors"
 }
 ```
 
@@ -34,10 +34,10 @@ Note: The implementation uses `/rest` instead of `/api/v1` as per tutorial guide
 
 Rooms support CRUD operations:
 
-* GET `/rest/rooms`
-* POST `/rest/rooms`
-* GET `/rest/rooms/{id}`
-* DELETE `/rest/rooms/{id}`
+* GET `/api/v1/rooms`
+* POST `/api/v1/rooms`
+* GET `/api/v1/rooms/{id}`
+* DELETE `/api/v1/rooms/{id}`
 
 Rooms require client-provided IDs as per module guidelines.
 
@@ -51,9 +51,9 @@ Sensors are linked to rooms.
 
 Endpoints:
 
-* GET `/rest/sensors`
-* POST `/rest/sensors`
-* GET `/rest/sensors?type=CO2`
+* GET `/api/v1/sensors`
+* POST `/api/v1/sensors`
+* GET `/api/v1/sensors?type=CO2`
 
 Validation:
 
@@ -65,8 +65,8 @@ Validation:
 
 Readings are implemented as a sub-resource:
 
-* GET `/rest/sensors/{id}/readings`
-* POST `/rest/sensors/{id}/readings`
+* GET `/api/v1/sensors/{id}/readings`
+* POST `/api/v1/sensors/{id}/readings`
 
 Each reading updates the sensor’s current value.
 
@@ -93,7 +93,7 @@ Request and response logging is implemented using JAX-RS filters.
 
 Example request:
 
-POST `/rest/rooms`
+POST `/api/v1/rooms`
 
 ```
 {
@@ -128,7 +128,7 @@ mvn clean install
 3. Access:
 
 ```
-http://localhost:8080/<project-name>/rest/
+http://localhost:8080/<project-name>/api/v1/
 ```
 
 ---
